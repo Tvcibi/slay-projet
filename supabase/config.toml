@@ -1,0 +1,7 @@
+project_id = "zffqpzqbeeiirzensaix"
+
+[functions.discord-auth]
+verify_jwt = false
+
+[functions.discord-webhook]
+verify_jwt = false

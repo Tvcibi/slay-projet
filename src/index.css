@@ -1,0 +1,227 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 98%;
+    --foreground: 240 10% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 10%;
+
+    --primary: 225 70% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 240 5% 92%;
+    --secondary-foreground: 240 10% 10%;
+
+    --muted: 240 5% 92%;
+    --muted-foreground: 240 5% 40%;
+
+    --accent: 240 5% 92%;
+    --accent-foreground: 240 10% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 142.1 70.6% 45.3%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 10%;
+
+    --surface: 0 0% 100%;
+    --surface-foreground: 240 10% 10%;
+
+    --border: 240 5.9% 88%;
+    --input: 240 5.9% 88%;
+    --ring: 225 70% 50%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 97%;
+    --sidebar-foreground: 240 5% 40%;
+    --sidebar-primary: 225 70% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 5% 92%;
+    --sidebar-accent-foreground: 240 10% 10%;
+    --sidebar-border: 240 5.9% 88%;
+    --sidebar-ring: 225 70% 50%;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 95%;
+
+    --card: 240 10% 6%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 240 10% 6%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 225 70% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 240 5.9% 15%;
+    --secondary-foreground: 0 0% 95%;
+
+    --muted: 240 5.9% 15%;
+    --muted-foreground: 240 5% 64.9%;
+
+    --accent: 240 5.9% 15%;
+    --accent-foreground: 0 0% 95%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 142.1 70.6% 45.3%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 10%;
+
+    --surface: 240 10% 6%;
+    --surface-foreground: 0 0% 95%;
+
+    --border: 240 5.9% 15%;
+    --input: 240 5.9% 15%;
+    --ring: 225 70% 50%;
+
+    --sidebar-background: 240 10% 5%;
+    --sidebar-foreground: 240 5% 64.9%;
+    --sidebar-primary: 225 70% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 5.9% 12%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 240 5.9% 15%;
+    --sidebar-ring: 225 70% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Hide number input spinners */
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--border));
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--muted-foreground) / 0.5);
+  }
+
+  /* Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--border)) transparent;
+  }
+}
+
+@layer utilities {
+  .surface-card {
+    @apply bg-card rounded-xl border border-border/50 shadow-sm;
+  }
+
+  .input-field {
+    @apply w-full bg-input/30 border border-border rounded-lg px-4 py-2 text-foreground placeholder:text-muted-foreground focus:ring-2 focus:ring-primary/50 focus:border-transparent outline-none transition-all;
+  }
+
+  .btn-press {
+    @apply active:scale-[0.98] transition-transform duration-100;
+  }
+}
+
+/* Zone tooltips */
+.zone-tooltip {
+  background: hsl(240 10% 6% / 0.9) !important;
+  border: 1px solid hsl(240 5.9% 15%) !important;
+  color: hsl(0 0% 95%) !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  padding: 4px 10px !important;
+  border-radius: 6px !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3) !important;
+}
+.zone-tooltip::before {
+  border-top-color: hsl(240 10% 6% / 0.9) !important;
+}
+
+/* Leaflet draw polygon vertices */
+.leaflet-div-icon,
+.leaflet-editing-icon,
+.leaflet-marker-icon.leaflet-div-icon {
+  background: hsl(225 70% 50%) !important;
+  border: 2px solid white !important;
+  border-radius: 50% !important;
+  width: 10px !important;
+  height: 10px !important;
+  margin-left: -5px !important;
+  margin-top: -5px !important;
+  box-shadow: 0 0 4px rgba(0,0,0,0.4) !important;
+}
+
+/* Leaflet draw toolbar styling */
+.leaflet-draw-actions a {
+  background: hsl(240 10% 8%) !important;
+  color: hsl(0 0% 90%) !important;
+  border: 1px solid hsl(240 5.9% 20%) !important;
+  border-radius: 6px !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  padding: 4px 12px !important;
+  line-height: 1.4 !important;
+}
+.leaflet-draw-actions a:hover {
+  background: hsl(240 10% 14%) !important;
+  color: hsl(0 0% 100%) !important;
+}
+.leaflet-draw-actions {
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+.leaflet-draw-actions li {
+  background: none !important;
+  border: none !important;
+}
+.leaflet-draw-actions li:first-child a {
+  border-radius: 6px !important;
+}
+.leaflet-draw-actions li:last-child a {
+  border-radius: 6px !important;
+}

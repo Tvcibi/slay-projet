@@ -1,0 +1,1 @@
+ALTER TABLE map_zones DROP COLUMN IF EXISTS created_by;

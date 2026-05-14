@@ -1,0 +1,1 @@
+DELETE FROM reports WHERE id = '123f4c42-d8b4-479c-a94b-653c41f029aa'
